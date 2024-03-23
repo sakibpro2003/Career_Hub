@@ -1,7 +1,9 @@
-import React from "react";
-
+import { CiLocationOn } from "react-icons/ci";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 const Job = ({ job }) => {
   const {
+    id,
     logo,
     job_title,
     company_name,
@@ -14,10 +16,7 @@ const Job = ({ job }) => {
     <div className="md:mx-auto gap-6">
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            alt="Shoes"
-          />
+          <img src={logo} alt="Shoes" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{job_title}</h2>
@@ -29,8 +28,20 @@ const Job = ({ job }) => {
             </button>
             <button className="btn bg-none border-white">{job_type}</button>
           </div>
+
+          <div className="flex gap-6">
+            <h2 className="flex items-center">
+              <CiLocationOn />
+              {location}
+            </h2>
+            <h2 className="flex items-center">
+              <RiMoneyDollarCircleLine /> Salary:{salary}
+            </h2>
+          </div>
           <div className="card-actions ">
-            <button className="btn btn-primary">View Details</button>
+            <Link to={`job/${id}`}>
+              <button className="btn btn-primary">View Details</button>
+            </Link>
           </div>
         </div>
       </div>
